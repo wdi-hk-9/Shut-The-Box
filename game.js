@@ -5,6 +5,7 @@ var Game = function(){
   this.tilesOpenTotal = 0;
   this.tempPlayerSelected = [];
   this.tempPlayerTotal = 0;
+
 };
 
  // generate random number
@@ -27,9 +28,9 @@ Game.prototype.rollTotal = function(){
 
 Game.prototype.playerTotal = function(){
   this.tempPlayerTotal = 0;
-  console.log("Current Total ", this.tempPlayerTotal)
+  //console.log("Current Total ", this.tempPlayerTotal)
   for (var i = 0; i < this.tempPlayerSelected.length; i++) {
     this.tempPlayerTotal += this.tempPlayerSelected[i];
   }
-  console.log("After sum ", this.tempPlayerTotal);
+  //console.log("After sum ", this.tempPlayerTotal);
 }

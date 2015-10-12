@@ -1,24 +1,23 @@
 $(function(){
 
 var game = new Game();
-//var tile = $(".tile");
 
-rollDice();
+$('.player-message').html("Player: Click Dice to Roll");
 
-function rollDice () {
+$('div.dice').on('click', function rollDice () {
   game.diceFace();
   // console.log(game.rollTotal());
   changeDiceImage(game.dice.dice1, $('#dice1') );
   changeDiceImage(game.dice.dice2, $('#dice2') );
   $('.roll-total').html("Roll Total: " + game.rollTotal());
   checkOpenTiles();
-}
+});
 
 function checkOpenTiles(){
   var tile = $(".tile");
   for (var i = 0; i < tile.length; i++){
-    //console.log(parseInt(tile.eq(i).html()));
-    game.tilesOpenTotal += parseInt(tile.eq(i).html());
+    console.log(parseInt(tile.eq(i).val()));
+    game.tilesOpenTotal += parseInt(tile.eq(i).val());
   }
 
   if (game.rollTotal() > game.tilesOpenTotal) {
@@ -41,14 +40,22 @@ function closeTile(e){
   var index = game.tempPlayerSelected.indexOf(selectedValue);
   if (index === -1) {
     game.tempPlayerSelected.push(selectedValue);
-    ($(e.target).html(0).toggleClass("font-color"));
+    ($(e.target).val(0).toggleClass("font-color"));
   } else {
     game.tempPlayerSelected.splice(index, 1);
-    ($(e.target).removeClass("font-color").html(value));
+    ($(e.target).removeClass("font-color"));
     }
-  console.log("The array ", game.tempPlayerSelected);
+  //console.log("The array ", game.tempPlayerSelected);
   game.playerTotal();
-  console.log(game.tempPlayerSelected);
+  //console.log(game.tempPlayerSelected);
+  //console.log("After sum ", game.tempPlayerTotal);
+  checkTileDiceMatch();
+}
+
+function checkTileDiceMatch(){
+  if (game.rollTotal === game.tempPlayerTotal) {
+    console.log("roll total and tiles closed match!");
+  }
 }
 
 function changeDiceImage(dice, element){
