@@ -1,4 +1,3 @@
-# Shut-The-Box
 WDI HK 9 Project 1
 
 Shut The Box
@@ -9,7 +8,7 @@ Rules
 
 At the start of the game all levers or tiles are "open" (cleared, up), showing the numerals 1 to 9.
 
-During the game, each player plays in turn. A player begins his or her turn by throwing or rolling two dice into the box. 
+During the game, each player plays in turn. A player begins his or her turn by throwing or rolling two dice into the box.
 
 After throwing, the player adds up the dots (pips) on the dice and then "shuts" (closes, covers) one of any combination of open numbers that equals the total number of dots showing on the dice. For example, if the total number of dots is 8, the player may choose any of the following sets of numbers (as long as all of the numbers in the set are available to be covered):
 
@@ -24,4 +23,4 @@ The player then rolls the dice again, aiming to shut more numbers. The player co
 
 After every player has taken a turn, the player with the lowest score wins.
 
-If a player succeeds in closing all of the numbers, he or she is said to have *"Shut the Box”* the player wins immediately and the game is over.
+If a player succeeds in closing all of the numbers, he or she is said to have **"Shut the Box”** the player wins immediately and the game is over.
