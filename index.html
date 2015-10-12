@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Shut The Box">
+    <meta name="author" content="">
+
+    <script src="jquery.min.js"></script>
+    <script src="bootstrap.min.js"></script>
+    <script src="application.js"></script>
+    <script src="game.js"></script>
+
+    <link href="bootstrap.min.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+  </head>
+  <body>
+
+  <header class="container">
+    <h1 align="center">Shut The Box</h1>
+    <div class ="row col-xs-12">
+      <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#">Game</a></li>
+        <li role="presentation" class="active"><a href="rules.html">Rules</a></li>
+        <li role="presentation" class="dropdown">
+          <a href="#" class="dropdown-toggle text-muted" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Players<span></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="#">One Player</a></li>
+            <li><a href="#">Two Player</a></li>
+            <li><a href="#">Three Player</a></li>
+            <li><a href="#">Four Player</a></li>
+          </ul>
+        </li>
+        <li role="presentation" class="dropdown">
+          <a href="#" class="dropdown-toggle text-muted" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tiles<span></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="#">9 Tiles</a></li>
+            <li><a href="#">12 Tiles</a></li>
+          </ul>
+        </li>
+        <li role="presentation" class="active">
+          <button id="new-game" class="btn btn-default">New Game</button>
+        </li>
+      </ul>
+    </div>
+  </header>
+
+  <section class="container bg-success" align="center">
+    <button class="tile" value="1">1</button>
+    <button class="tile" value="2">2</button>
+    <button class="tile" value="3">3</button>
+    <button class="tile" value="4">4</button>
+    <button class="tile" value="5">5</button>
+    <button class="tile" value="6">6</button>
+    <button class="tile" value="7">7</button>
+    <button class="tile" value="8">8</button>
+    <button class="tile" value="9">9</button>
+
+    <div class="dice">
+      <img id="face1" src="file:///var/folders/ct/7_7rql1n1wz2jz37vvqd0cpm0000gn/T/noun_dice_116708.png" class="">
+      <img id="face2" src="file:///var/folders/ct/7_7rql1n1wz2jz37vvqd0cpm0000gn/T/noun_dice_116707.png" class="">
+      <img id="face3" src="file:///var/folders/ct/7_7rql1n1wz2jz37vvqd0cpm0000gn/T/noun_dice_116713.png" class="hidden">
+      <img id="face4" src="file:///var/folders/ct/7_7rql1n1wz2jz37vvqd0cpm0000gn/T/noun_dice_116712.png" class="hidden">
+      <img id="face5" src="file:///var/folders/ct/7_7rql1n1wz2jz37vvqd0cpm0000gn/T/noun_dice_116709.png" class="hidden">
+      <img id="face6" src="file:///var/folders/ct/7_7rql1n1wz2jz37vvqd0cpm0000gn/T/noun_dice_116710.png" class="hidden">
+    </div>
+  </section>
+
+  <article class="container" align="left">
+    <p class="player-message col-xs-6">Player 1:</p>
+    <p class="roll-total col-xs-6">Roll Total:</p>
+  </article>
+
+  <section class="container bg-success" align="center">
+    <h2><strong>Scoreboard</strong></h2>
+    <h3 class="player1 col-xs-3 text-muted">Player 1: <span>0</h3>
+    <h3 class="player2 col-xs-3 text-muted">Player 2: <span>0</h3>
+    <h3 class="player3 col-xs-3 text-muted">Player 3: <span>0</h3>
+    <h3 class="player4 col-xs-3 text-muted">Player 4: <span>0</h3>
+  </section>
+
+  <footer class="container">
+    <p class="credit" align="left">Credit: Dice by Christian Mohr from the Noun Project</p>
+  </footer>
+
+  </body>
+</html>
