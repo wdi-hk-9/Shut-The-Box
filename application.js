@@ -36,17 +36,19 @@ function addClickEvent(){
 }
 
 function closeTile(e){
-  var selectedValue = parseInt($(e.target).val());
+  var value = $(e.target).val();
+  var selectedValue = parseInt($(e.target).html());
   var index = game.tempPlayerSelected.indexOf(selectedValue);
-
   if (index === -1) {
     game.tempPlayerSelected.push(selectedValue);
+    ($(e.target).html(0).toggleClass("font-color"));
   } else {
     game.tempPlayerSelected.splice(index, 1);
-  }
+    ($(e.target).removeClass("font-color").html(value));
+    }
   console.log("The array ", game.tempPlayerSelected);
   game.playerTotal();
-  // console.log(game.tempPlayerSelected);
+  console.log(game.tempPlayerSelected);
 }
 
 function changeDiceImage(dice, element){
