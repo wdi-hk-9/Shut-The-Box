@@ -19,6 +19,10 @@ button.tile {
   margin-top: 30px;
 }
 
+button.font-color {
+  color: #BB8D47
+}
+
 img {
   height: 100px;
   width: auto;
