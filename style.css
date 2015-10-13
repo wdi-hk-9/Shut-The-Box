@@ -50,6 +50,9 @@ body {
 }
 
 .dice > div {
+  margin-bottom: 10px;
+}
+button#end-turn {
   margin-bottom: 40px;
 }
 
@@ -67,12 +70,6 @@ footer p {
 p {
   padding-top: 10px;
   padding-bottom: 10px;
-}
-
-
-.container_scoreboard_col-xs-6_bg-success {
-  display: block;
-  text-align: center;
 }
 
 h3 {
