@@ -2,7 +2,7 @@ body {
   font-family: 'Montserrat', sans-serif;
 }
 
-button.tile {
+.tile {
   display: inline-block;
   width: 60px;
   height: 120px;
@@ -10,27 +10,47 @@ button.tile {
   border-style: solid;
   border: 2px;
   margin-right: 10px;
+  margin-top: 30px;
+  padding-top: 10px;
   text-align: center;
   font-size: 30px;
-  background-color: #BB8D47;
   border-radius: 5px;
   line-height: 40px;
-  padding-top: 10px;
-  margin-top: 30px;
+  color: white;
 }
 
-button.font-color {
-  color: #BB8D47
+.tile:hover {
+  text-decoration: none;
+  color: white;
 }
 
-img {
+.tile-active {
+  background-color: #BB8D47;
+}
+
+.tile-active:hover {
+  box-shadow: 2px 2px blue;
+}
+
+.tile-disabled {
+  background-color: #ccc !important;
+}
+
+.player-selected {
+  background-color: red;
+}
+
+.dice > img {
   height: 100px;
   width: auto;
   background-color: white;
   margin: 10px;
   margin-top: 40px;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
+}
 
+.dice > div {
+  margin-bottom: 40px;
 }
 
 
