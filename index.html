@@ -54,9 +54,9 @@
         <div id="game" class="tab-pane fade in active">
         </div>
         <div id="rules" class="tab-pane fade">
-          <p>At the start of the game all levers or tiles are "open" (cleared, up), showing the numerals 1 to 9.</p>
+          <p>At the start of the game all tiles are "open", showing the numerals 1 to 9.</p>
           <p>During the game, each player plays in turn. A player begins his or her turn by throwing or rolling two dice into the box.</p>
-          <p>After throwing, the player adds up the dots (pips) on the dice and then "shuts" (closes, covers) one of any combination of open numbers that equals the total number of dots showing on the dice. For example, if the total number of dots is 8, the player may choose any of the following sets of numbers (as long as all of the numbers in the set are available to be covered):</p>
+          <p>After throwing, the player adds up the dots (pips) on the dice and then "shuts" (closes) one of any combination of open numbers that equals the total number of dots showing on the dice. For example, if the total number of dots is 8, the player may choose any of the following sets of numbers (as long as all of the numbers in the set are available to be covered):</p>
           <ul>
             <li>8</li>
             <li>7, 1</li>
@@ -91,16 +91,17 @@
       <img id="dice2" src="img/face6.png">
       <div>
         <button id="roll-btn" class="btn btn-default">Roll the dice</button>
+        <button id="confirm-tiles" class ="btn btn-default hide">Ok</button>
       </div>
       <div>
-        <button id="end-turn" class="btn btn-default">Give Up</button>
+        <button id="end-turn" class="btn btn-default">Cant go, I give up</button>
       </div>
     </div>
   </section>
 
   <article class="container" align="left">
     <div class="col-xs-6">
-      <p class="player-message">Player 1: Click Dice to Roll</p>
+      <p class="player-message"></p>
     </div>
     <div class="col-xs-6">
       <p class="roll-total"></p>

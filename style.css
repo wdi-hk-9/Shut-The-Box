@@ -52,7 +52,9 @@ body {
 .dice > div {
   margin-bottom: 10px;
 }
-button#end-turn {
+
+}
+button#confirm-tiles {
   margin-bottom: 40px;
 }
 

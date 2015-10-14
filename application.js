@@ -2,11 +2,9 @@ $(function(){
   // initial values
   var tile = $("a.tile");
 
+  // update messages to players
   var updateMessage = function(playerMessage) {
     $('.player-message').html(playerMessage);
-
-    // var msg = "Roll Total: " + game.dice.sum;
-    // $('.roll-total').html(msg);
   };
 
   // change dice image
@@ -14,6 +12,8 @@ $(function(){
     game.roll();
     $('#dice1').attr('src', 'img/face' + game.dice.dice1 +'.png');
     $('#dice2').attr('src', 'img/face' + game.dice.dice2 +'.png');
+    var msg = "Roll Total: " + game.dice.sum;
+    $('.roll-total').html(msg);
   };
 
   // Smaller or equal the dice roll, AND not used
@@ -58,74 +58,97 @@ $(function(){
             game.tilesPlayerSelected.splice(index, 1);
             $(this).removeClass('player-selected');
           }
+
+          confirmPlayerTileSelection();
         });
       }
     };
   };
+
   //check player selection with dice roll total and disable player selected tiles
   var confirmPlayerTileSelection = function () {
     if (game.started === true ){
       game.calculatePlayerTileSelection();
       if (game.dice.sum === game.playerTileTotal) {
-        console.log("continue");
 
-        for(var tile = 1; tile < 10; tile ++) {
-          $tile = $('.player-selected');
-          $tile.addClass('tile-disabled');
-          $tile.removeClass('tile-active');
-        }
-      game.started = true;
+        // for(var tile = 1; tile < 10; tile ++) {
+        //   tile = $('.player-selected');
+        //   tile.addClass('tile-disabled');
+        //   tile.removeClass('tile-active');
+        // }
+
+        $('#confirm-tiles').removeAttr("disabled");
+
+        console.log('tile sum correct');
+      } else {
+        console.log("it doesnt add up");
+        // $('#roll-btn').addClass("hide");
       }
     }
   };
 
   //end player turn, calculate score and switch players
   $('#end-turn').on('click', function () {
-    //console.log("end game");
     var points = 0
+
       for (var i = 0; i < tile.length; i++) {
         if (!tile.eq(i).hasClass('player-selected')) {
           var openTile = parseInt(tile.eq(i).html());
           points += openTile;
-          console.log(points);
-          //return points;
         }
       }
-    game.players[game.currentPlayer]['points'] = points;
-    //console.log(game.players[game.currentPlayer]['points']);
-    $('h3.player1').html("Player 1: " + game.players[game.currentPlayer]['points']);
-      if (game.currentPlayer === "Player1"){
-        game.currentPlayer = "Player2";
-      }
 
+    game.players[game.currentPlayer]['points'] = points;
+
+    if (game.currentPlayer === "Player1") {
+      $('h3.player1').html(game.currentPlayer + ": " + game.players[game.currentPlayer]['points']);
+    } else {
+      $('h3.player2').html(game.currentPlayer + ": " + game.players[game.currentPlayer]['points']);
+    }
+
+    if (game.currentPlayer === "Player1"){
+      game.currentPlayer = "Player2";
+      updateMessage(game.currentPlayer + ": Click Roll the Dice");
+    } else{
+      updateMessage("Game Over");
+        if ((game.players['Player1']['points']) > (game.players['Player2']['points'])) {
+          alert("Player2 Wins!");
+        } else if ((game.players['Player1']['points']) < (game.players['Player2']['points'])) {
+          alert("Player1 Wins!");
+        } else {
+          alert("its a draw");
+        }
+    }
       game.tilesPlayerSelected = [];
-      console.log(game.currentPlayer);
       refreshBoard();
-      if (currentPlayer = "player2") {
-        $('h3.player2').html("Player 2: " + game.players[game.currentPlayer]['points']);
-      }
   });
+
+  updateMessage("Player1: Click Roll the Dice to Start Game");
 
   //click button to roll the dice
   $('#roll-btn').on('click', function () {
-    confirmPlayerTileSelection();
+    game.started = true;
+    $('#roll-btn').addClass("hide");
+    $('#confirm-tiles').removeClass("hide");
+    $('#confirm-tiles').attr("disabled", "");
+
+    updateMessage(game.currentPlayer + ": Select tiles to win");
     rollDice();
-    updateMessage();
     updateTiles();
     bindActiveTiles();
   });
 
   // new game button function
   $('#new-game').on('click', function() {
-      console.log("this should clear the game");
       refreshBoard();
-      //game.dice = null;
       game.tilesPlayerSelected = [];
       game.playerTileTotal = 0;
       this.openTileValue = [];
       game.currentPlayer = "Player1";
       game.players[game.currentPlayer]['points'] = 0;
-
+      $('h3.player2').html("Player 2: " + game.players[game.currentPlayer]['points']);
+      $('h3.player1').html("Player 1: " + game.players[game.currentPlayer]['points']);
+      updateMessage(game.currentPlayer + ": Click Roll the Dice to Start Game");
   });
 
   //refresh the tiles
@@ -136,7 +159,6 @@ $(function(){
         tile.eq(i).addClass("tile");
         tile.eq(i).addClass("tile-active")
       }
-    updateMessage(game.currentPlayer + ": Roll the Dice to Start Game");
   }
 
   var game = new Game();
