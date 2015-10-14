@@ -23,7 +23,7 @@ $(function(){
 
   // if tile > dice roll then disable tiles
   var updateTiles = function() {
-    for(var tile = 1; tile < 10; tile ++) {
+    for(var tile = 1; tile < game.maxTile; tile ++) {
       $tile = $('#p1-tile'+tile);
 
       if (titleisActive(tile)) {
@@ -73,7 +73,7 @@ $(function(){
       }
 
     $('#confirm-tiles').on('click', function(){
-      for(var tile = 1; tile < 10; tile ++) {
+      for(var tile = 1; tile < game.maxTile; tile ++) {
       $tile = $('.player-selected');
       $tile.addClass('tile-disabled');
       $tile.removeClass('tile-active');
@@ -81,6 +81,7 @@ $(function(){
 
     updateMessage(game.currentPlayer + ": click dice to roll");
     $('#roll-btn').removeClass("hide");
+    $('#end-turn').addClass("hide");
     $('#confirm-tiles').addClass("hide");
     game.playerTileTotal = 0;
     game.tilesPlayerSelected = [];
@@ -111,6 +112,7 @@ $(function(){
       game.currentPlayer = "Player2";
       updateMessage(game.currentPlayer + ": Click Roll the Dice");
       $('#roll-btn').removeClass("hide");
+      $('#end-turn').addClass("hide");
       $('#confirm-tiles').addClass("hide");
     } else{
       updateMessage("Game Over");
@@ -132,6 +134,7 @@ $(function(){
   $('#roll-btn').on('click', function () {
     game.started = true;
     $('#roll-btn').addClass("hide");
+    $('#end-turn').removeClass("hide");
     $('#confirm-tiles').removeClass("hide");
     $('#confirm-tiles').attr("disabled", "");
 
@@ -151,12 +154,12 @@ $(function(){
       game.players[game.currentPlayer]['points'] = 0;
       $('h3.player2').html("Player 2: " + game.players[game.currentPlayer]['points']);
       $('h3.player1').html("Player 1: " + game.players[game.currentPlayer]['points']);
-      updateMessage(game.currentPlayer + ": Click Roll the Dice to Start Game");
+      updateMessage(game.currentPlayer + ": Roll the Dice to Start");
       $('#roll-btn').removeClass("hide");
       $('#confirm-tiles').addClass("hide");
+      $('#end-turn').addClass("hide");
       $('section.intro-page').removeClass("hide");
       $('section.game-page').addClass("hide");
-
   });
 
   //refresh the tiles
@@ -173,6 +176,25 @@ $(function(){
   $('button#start-game').on('click', function (){
     $('section.intro-page').addClass("hide");
     $('section.game-page').removeClass("hide");
+  })
+
+  //select number of tiles 9 or 12
+  $('section.intro-page #9tile').on('click', function (){
+    console.log('9 tiles');
+    game.maxTile = 10
+    console.log(game.maxTile);
+    $('a#p1-tile10').remove().html(0);
+    $('a#p1-tile11').remove().html(0);
+    $('a#p1-tile12').remove().html(0);
+  })
+
+  $('section.intro-page #12tile').on('click', function (){
+    console.log('12 tiles');
+    game.maxTile = 13
+    console.log(game.maxTile);
+    $('a#p1-tile10').add().html(10);
+    $('a#p1-tile11').add().html(11);
+    $('a#p1-tile12').add().html(12);
   })
 
   var game = new Game();
