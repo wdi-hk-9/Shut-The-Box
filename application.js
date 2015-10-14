@@ -87,6 +87,7 @@ $(function(){
       $tile.removeClass('tile-active');
       }
 
+    updateMessage(game.currentPlayer + ": click dice to roll");
     $('#roll-btn').removeClass("hide");
     $('#confirm-tiles').addClass("hide");
     game.playerTileTotal = 0;
@@ -159,6 +160,9 @@ $(function(){
       $('h3.player2').html("Player 2: " + game.players[game.currentPlayer]['points']);
       $('h3.player1').html("Player 1: " + game.players[game.currentPlayer]['points']);
       updateMessage(game.currentPlayer + ": Click Roll the Dice to Start Game");
+      $('#roll-btn').removeClass("hide");
+      $('#confirm-tiles').addClass("hide");
+
   });
 
   //refresh the tiles
