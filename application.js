@@ -71,19 +71,27 @@ $(function(){
       game.calculatePlayerTileSelection();
       if (game.dice.sum === game.playerTileTotal) {
 
-        // for(var tile = 1; tile < 10; tile ++) {
-        //   tile = $('.player-selected');
-        //   tile.addClass('tile-disabled');
-        //   tile.removeClass('tile-active');
-        // }
-
         $('#confirm-tiles').removeAttr("disabled");
 
         console.log('tile sum correct');
+        console.log(game.dice.sum, game.playerTileTotal, game.tilesPlayerSelected);
       } else {
         console.log("it doesnt add up");
-        // $('#roll-btn').addClass("hide");
+        console.log(game.dice.sum, game.playerTileTotal, game.tilesPlayerSelected);
       }
+
+    $('#confirm-tiles').on('click', function(){
+      for(var tile = 1; tile < 10; tile ++) {
+      $tile = $('.player-selected');
+      $tile.addClass('tile-disabled');
+      $tile.removeClass('tile-active');
+      }
+
+    $('#roll-btn').removeClass("hide");
+    $('#confirm-tiles').addClass("hide");
+    game.playerTileTotal = 0;
+    game.tilesPlayerSelected = [];
+    })
     }
   };
 
@@ -109,6 +117,8 @@ $(function(){
     if (game.currentPlayer === "Player1"){
       game.currentPlayer = "Player2";
       updateMessage(game.currentPlayer + ": Click Roll the Dice");
+      $('#roll-btn').removeClass("hide");
+      $('#confirm-tiles').addClass("hide");
     } else{
       updateMessage("Game Over");
         if ((game.players['Player1']['points']) > (game.players['Player2']['points'])) {
