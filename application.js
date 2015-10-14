@@ -16,7 +16,7 @@ $(function(){
     $('.roll-total').html(msg);
   };
 
-  // Smaller or equal the dice roll, AND not used
+  // smaller or equal the dice roll, AND not used
   var titleisActive = function(tile) {
     return (tile <= game.dice.sum);
   };
@@ -48,8 +48,8 @@ $(function(){
 
       if ( !has_selected_tile && !has_disabled_tile ){
         tile.eq(i).on("click",function( event ) {
-          var tileValue = parseInt($(this).html());
-          var index = game.tilesPlayerSelected.indexOf(tileValue);
+        var tileValue = parseInt($(this).html());
+        var index = game.tilesPlayerSelected.indexOf(tileValue);
 
           if (index === -1) {
             $(this).addClass('player-selected');
@@ -58,7 +58,6 @@ $(function(){
             game.tilesPlayerSelected.splice(index, 1);
             $(this).removeClass('player-selected');
           }
-
           confirmPlayerTileSelection();
         });
       }
@@ -70,14 +69,7 @@ $(function(){
     if (game.started === true ){
       game.calculatePlayerTileSelection();
       if (game.dice.sum === game.playerTileTotal) {
-
         $('#confirm-tiles').removeAttr("disabled");
-
-        console.log('tile sum correct');
-        console.log(game.dice.sum, game.playerTileTotal, game.tilesPlayerSelected);
-      } else {
-        console.log("it doesnt add up");
-        console.log(game.dice.sum, game.playerTileTotal, game.tilesPlayerSelected);
       }
 
     $('#confirm-tiles').on('click', function(){
@@ -92,6 +84,7 @@ $(function(){
     $('#confirm-tiles').addClass("hide");
     game.playerTileTotal = 0;
     game.tilesPlayerSelected = [];
+
     })
     }
   };
@@ -99,7 +92,6 @@ $(function(){
   //end player turn, calculate score and switch players
   $('#end-turn').on('click', function () {
     var points = 0
-
       for (var i = 0; i < tile.length; i++) {
         if (!tile.eq(i).hasClass('player-selected')) {
           var openTile = parseInt(tile.eq(i).html());
@@ -130,8 +122,8 @@ $(function(){
           alert("its a draw");
         }
     }
-      game.tilesPlayerSelected = [];
-      refreshBoard();
+    game.tilesPlayerSelected = [];
+    refreshBoard();
   });
 
   updateMessage("Player1: Click Roll the Dice to Start Game");
@@ -162,6 +154,8 @@ $(function(){
       updateMessage(game.currentPlayer + ": Click Roll the Dice to Start Game");
       $('#roll-btn').removeClass("hide");
       $('#confirm-tiles').addClass("hide");
+      $('section.intro-page').removeClass("hide");
+      $('section.game-page').addClass("hide");
 
   });
 
@@ -175,6 +169,11 @@ $(function(){
       }
   }
 
-  var game = new Game();
+  //intro page start game click event
+  $('button#start-game').on('click', function (){
+    $('section.intro-page').addClass("hide");
+    $('section.game-page').removeClass("hide");
+  })
 
+  var game = new Game();
 });

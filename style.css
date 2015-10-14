@@ -2,14 +2,6 @@ body {
   font-family: 'Montserrat', sans-serif;
 }
 
-#intro-page-players > h2 {
-  margin-top: 10px;
-}
-
-#intro-page-tiles>h2 {
-  margin-top: 10px;
-}
-
 .tile {
   display: inline-block;
   width: 60px;

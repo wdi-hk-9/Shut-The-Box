@@ -17,25 +17,21 @@
     <script src="application.js"></script>
     <script src="game.js"></script>
     <script src="https://code.createjs.com/soundjs-0.6.1.min.js"></script>
-
   </head>
 
   <body>
-  <section class="">
-
+  <section class="intro-page">
     <div class="jumbotron">
       <div class="container" align="center">
         <h1>Are you ready to play <br> Shut The Box?!</h1>
-
         <div class="row">
           <div class="col-xs-6">
-            <h2 id="intro-page-players">How many players?</h2>
+            <h2>How many players?</h2>
             <button type="button" class="btn btn-default btn-lg" type="submit">1 Player</button>
             <button type="button" class="btn btn-default btn-lg" type="submit">2 Player</button>
           </div>
-
           <div class="col-xs-6">
-            <h2 id="intro-page-tiles">How many tiles?</h2>
+            <h2>How many tiles?</h2>
             <button type="button" class="btn btn-default btn-lg" type="submit">9 Tiles</button>
             <button type="button" class="btn btn-default btn-lg" type="submit">12 Tiles</button>
           </div>
@@ -45,67 +41,46 @@
       <div class="container" align="center">
         <div class="row">
           <div>
-            <button class="btn btn-success btn-lg" type="submit">Start the Game</button>
+            <button id="start-game" class="btn btn-success btn-lg" type="submit">Start the Game</button>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="hide">
+  <section class="game-page hide">
     <header class="container">
-    <!-- <header class="container"> -->
       <h1 align="center">Shut The Box</h1>
       <div class ="row">
-      <div class ="col-xs-12">
-        <ul class="nav nav-tabs">
-          <li class="active"><a href="#game" data-toggle="tab">Game</a></li>
-          <li><a href="#rules" data-toggle="tab">Rules</a></li>
-          <li role="presentation" class="dropdown">
-            <a href="#" class="dropdown-toggle text-muted" data-toggle="dropdown"
-               role="button" aria-haspopup="true" aria-expanded="false">Players<span></span>
-            </a>
-            <ul class="dropdown-menu">
-              <li><a href="#">One Player</a></li>
-              <li><a href="#">Two Player</a></li>
-            </ul>
-          </li>
-          <li role="presentation" class="dropdown">
-            <a href="#" class="dropdown-toggle text-muted" data-toggle="dropdown"
-               role="button" aria-haspopup="true" aria-expanded="false">Tiles<span></span>
-            </a>
-            <ul class="dropdown-menu">
-              <li><a href="#">9 Tiles</a></li>
-              <li><a href="#">12 Tiles</a></li>
-            </ul>
-          </li>
-          <li role="presentation" class="active">
-            <button id="new-game" class="btn btn-default">New Game</button>
-          </li>
-        </ul>
+        <div class ="col-xs-12">
+          <ul class="nav nav-tabs">
+            <li class="active"><a href="#game" data-toggle="tab">Game</a></li>
+            <li><a href="#rules" data-toggle="tab">Rules</a></li>
+            <li role="presentation" class="active">
+              <button id="new-game" class="btn btn-default">New Game</button>
+            </li>
+          </ul>
 
-        <div class="tab-content">
-          <div id="game" class="tab-pane fade in active">
-          </div>
-          <div id="rules" class="tab-pane fade">
-            <p>At the start of the game all tiles are "open", showing the numerals 1 to 9.</p>
-            <p>During the game, each player plays in turn. A player begins his or her turn by throwing or rolling two dice into the box.</p>
-            <p>After throwing, the player adds up the dots (pips) on the dice and then "shuts" (closes) one of any combination of open numbers that equals the total number of dots showing on the dice. For example, if the total number of dots is 8, the player may choose any of the following sets of numbers (as long as all of the numbers in the set are available to be covered):</p>
-            <ul>
-              <li>8</li>
-              <li>7, 1</li>
-              <li>6, 2</li>
-              <li>5, 3</li>
-              <li>5, 2, 1</li>
-              <li>4, 3, 1</li>
-            </ul>
-            <p>The player then rolls the dice again, aiming to shut more numbers. The player continues throwing the dice and shutting numbers until reaching a point at which, given the results produced by the dice, the player cannot shut any more numbers. At that point, the player scores the sum of the numbers that are still uncovered. For example, if the numbers 2, 3, and 5 are still open when the player throws a one, the player's score is 10 (2 + 3 + 5 = 10). Play then passes to the next player.</p>
-            <p>After every player has taken a turn, the player with the lowest score wins.</p>
-            <p>If a player succeeds in closing all of the numbers, he or she is said to have <strong>"Shut the Box”</strong> the player wins immediately and the game is over.</p>
+          <div class="tab-content">
+            <div id="game" class="tab-pane fade in active"></div>
+              <div id="rules" class="tab-pane fade">
+                <p>At the start of the game all tiles are "open", showing the numerals 1 to 9.</p>
+                <p>During the game, each player plays in turn. A player begins his or her turn by throwing or rolling two dice into the box.</p>
+                <p>After throwing, the player adds up the dots (pips) on the dice and then "shuts" (closes) one of any combination of open numbers that equals the total number of dots showing on the dice. For example, if the total number of dots is 8, the player may choose any of the following sets of numbers (as long as all of the numbers in the set are available to be covered):</p>
+                <ul>
+                  <li>8</li>
+                  <li>7, 1</li>
+                  <li>6, 2</li>
+                  <li>5, 3</li>
+                  <li>5, 2, 1</li>
+                  <li>4, 3, 1</li>
+                </ul>
+                <p>The player then rolls the dice again, aiming to shut more numbers. The player continues throwing the dice and shutting numbers until reaching a point at which, given the results produced by the dice, the player cannot shut any more numbers. At that point, the player scores the sum of the numbers that are still uncovered. For example, if the numbers 2, 3, and 5 are still open when the player throws a one, the player's score is 10 (2 + 3 + 5 = 10). Play then passes to the next player.</p>
+                <p>After every player has taken a turn, the player with the lowest score wins.</p>
+                <p>If a player succeeds in closing all of the numbers, he or she is said to have <strong>"Shut the Box”</strong> the player wins immediately and the game is over.</p>
+              </div>
           </div>
         </div>
-
-      </div>
       </div>
     </header>
 
@@ -123,13 +98,13 @@
       <div class="dice">
         <img id="dice1" src="img/face6.png">
         <img id="dice2" src="img/face6.png">
-        <div>
-          <button id="roll-btn" class="btn btn-default btn-lg">Roll the dice</button>
-          <button id="confirm-tiles" class ="btn btn-default hide">Ok</button>
-        </div>
-        <div>
-          <button id="end-turn" class="btn btn-default">Cant go, I give up</button>
-        </div>
+          <div>
+            <button id="roll-btn" class="btn btn-default btn-lg">Roll the dice</button>
+            <button id="confirm-tiles" class ="btn btn-default hide">Ok</button>
+          </div>
+          <div>
+            <button id="end-turn" class="btn btn-default">Cant go, I give up</button>
+          </div>
       </div>
     </section>
 
@@ -144,19 +119,17 @@
 
     <section class="container bg-success" align="center">
       <h2><strong>Scoreboard</strong></h2>
-      <div class="col-xs-6">
-        <h3 class="player1">Player 1: <span>0</h3>
-      </div>
-      <div class="col-xs-6">
-        <h3 class="player2">Player 2: <span>0</h3>
-      </div>
+        <div class="col-xs-6">
+          <h3 class="player1">Player 1: <span>0</h3>
+        </div>
+        <div class="col-xs-6">
+          <h3 class="player2">Player 2: <span>0</h3>
+        </div>
     </section>
 
     <footer class="container">
       <p class="credit" align="left">Credit: Dice by Christian Mohr from the Noun Project</p>
     </footer>
   </section>
-
-
   </body>
 </html>
