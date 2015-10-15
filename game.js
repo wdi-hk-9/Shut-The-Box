@@ -5,7 +5,6 @@ var Game = function() {
   this.dice = null;
   this.tilesPlayerSelected = [];
   this.playerTileTotal = 0;
-
   this.currentPlayer = "Player1";
   this.players = {
     Player1: {
@@ -15,21 +14,7 @@ var Game = function() {
       points: 0,
     }
   };
-
 };
-
-// add new player to new game
-// Game.prototype.addPlayer = function(){
-//   this.players.push(Player);
-// };
-
-// this.player = function () {
-//   this.score = 0;
-// s};
-
-// var Player1 = new Player;
-// var Player2 = new Player;
-
 
 // assign random number to dices
 Game.prototype.roll = function() {

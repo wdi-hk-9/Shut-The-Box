@@ -17,7 +17,7 @@ $( function() {
   };
 
   // smaller or equal the dice roll, AND not used
-  var titleisActive = function( tile ) {
+  var tileisActive = function( tile ) {
     return ( tile <= game.dice.sum );
   };
 
@@ -26,7 +26,7 @@ $( function() {
     for ( var tile = 1; tile < game.maxTile; tile++ ) {
       $tile = $( '#p1-tile' + tile );
 
-      if ( titleisActive( tile ) ) {
+      if ( tileisActive( tile ) ) {
         $tile.addClass( 'tile-active' );
         $tile.removeClass( 'tile-disabled' );
       } else {
@@ -68,6 +68,7 @@ $( function() {
   var confirmPlayerTileSelection = function() {
     if ( game.started === true ) {
       game.calculatePlayerTileSelection();
+      console.log( game.playerTileTotal );
       if ( game.dice.sum === game.playerTileTotal ) {
         $( '#confirm-tiles' ).removeAttr( "disabled" );
       }
@@ -92,6 +93,8 @@ $( function() {
 
   //end player turn, calculate score and switch players
   $( '#end-turn' ).on( 'click', function() {
+    tile = $( 'a.tile' );
+    console.log( tile );
     var points = 0
     for ( var i = 0; i < tile.length; i++ ) {
       if ( !tile.eq( i ).hasClass( 'player-selected' ) ) {
@@ -161,6 +164,11 @@ $( function() {
     $( '#end-turn' ).addClass( "hide" );
     $( 'section.intro-page' ).removeClass( "hide" );
     $( 'section.game-page' ).addClass( "hide" );
+    if ( tile.length > 10 ) {
+      $( 'a#p1-tile10' ).detach().html( 0 );
+      $( 'a#p1-tile11' ).detach().html( 0 );
+      $( 'a#p1-tile12' ).detach().html( 0 );
+    }
   } );
 
   //refresh the tiles
@@ -175,34 +183,32 @@ $( function() {
 
   //intro page start game click event
   $( 'button#start-game' ).on( 'click', function() {
-    // selectNumberOfTiles();
     $( 'section.intro-page' ).addClass( "hide" );
     $( 'section.game-page' ).removeClass( "hide" );
-
-
   } )
 
   //select number of tiles 9 or 12
-  // var selectNumberOfTiles = function(){
   $( 'section.intro-page #9tile' ).on( 'click', function() {
     console.log( '9 tiles' );
-    game.maxTile = 10
+    game.maxTile = 10;
     console.log( game.maxTile );
-    $( 'a#p1-tile10' ).detach().html(0);
-    $( 'a#p1-tile11' ).detach().html(0);
-    $( 'a#p1-tile12' ).detach().html(0);
+    $( 'a#p1-tile10' ).detach().html( 0 );
+    $( 'a#p1-tile11' ).detach().html( 0 );
+    $( 'a#p1-tile12' ).detach().html( 0 );
 
   } );
   $( 'section.intro-page #12tile' ).on( 'click', function() {
     console.log( '12 tiles' );
-    game.maxTile = 13
+    game.maxTile = 13;
     console.log( game.maxTile );
-    $( '#tiles' ).append( '<a class="tile tile-active" value="10" id="p1-tile10">10</a>' );
-    $( '#tiles' ).append( '<a class="tile tile-active" value="11" id="p1-tile11">11</a>' );
-    $( '#tiles' ).append( '<a class="tile tile-active" value="12" id="p1-tile12">12</a>' );
+    var tilesAmount = $( '.tile' ).length
+    console.log( tilesAmount )
+    if ( tilesAmount === 9 ) {
+      $( '#tiles' ).append( '<a class="tile tile-active" value="10" id="p1-tile10">10</a>' );
+      $( '#tiles' ).append( '<a class="tile tile-active" value="11" id="p1-tile11">11</a>' );
+      $( '#tiles' ).append( '<a class="tile tile-active" value="12" id="p1-tile12">12</a>' );
+    };
   } );
-  // }
-
 
   var game = new Game();
 } );
