@@ -7,13 +7,20 @@ $( function() {
     $( '.player-message' ).html( playerMessage );
   };
 
+  var tileUpdateMessage = function( tileMessage ) {
+    $( '.tile-message' ).html( tileMessage );
+  };
+
   // change dice image
   var rollDice = function() {
     game.roll();
     $( '#dice1' ).attr( 'src', 'img/face' + game.dice.dice1 + '.png' );
     $( '#dice2' ).attr( 'src', 'img/face' + game.dice.dice2 + '.png' );
-    var msg = "Roll Total: " + game.dice.sum;
+    tileUpdateMessage( "Total tiles closed: " + game.playerTileTotal );
+
+    var msg = " Roll Total: " + game.dice.sum;
     $( '.roll-total' ).html( msg );
+
   };
 
   // smaller or equal the dice roll, AND not used
@@ -69,11 +76,15 @@ $( function() {
     if ( game.started === true ) {
       game.calculatePlayerTileSelection();
       console.log( game.playerTileTotal );
+      tileUpdateMessage( "Total tiles closed: " + game.playerTileTotal );
       if ( game.dice.sum === game.playerTileTotal ) {
         $( '#confirm-tiles' ).removeAttr( "disabled" );
       }
 
       $( '#confirm-tiles' ).on( 'click', function() {
+        tileUpdateMessage( "" );
+        $( '.roll-total' ).html( "" );
+        game.playerTileTotal = 0;
         for ( var tile = 1; tile < game.maxTile; tile++ ) {
           $tile = $( '.player-selected' );
           $tile.addClass( 'tile-disabled' );
@@ -86,7 +97,6 @@ $( function() {
         $( '#confirm-tiles' ).addClass( "hide" );
         game.playerTileTotal = 0;
         game.tilesPlayerSelected = [];
-
       } )
     }
   };
@@ -128,6 +138,8 @@ $( function() {
       }
     }
     game.tilesPlayerSelected = [];
+    tileUpdateMessage( "" );
+    $( '.roll-total' ).html( "" );
     refreshBoard();
   } );
 
@@ -159,6 +171,8 @@ $( function() {
     $( 'h3.player2' ).html( "Player 2: " + game.players[ game.currentPlayer ][ 'points' ] );
     $( 'h3.player1' ).html( "Player 1: " + game.players[ game.currentPlayer ][ 'points' ] );
     updateMessage( game.currentPlayer + ": Roll the Dice to Start" );
+    tileUpdateMessage( "" );
+    $( '.roll-total' ).html( "" );
     $( '#roll-btn' ).removeClass( "hide" );
     $( '#confirm-tiles' ).addClass( "hide" );
     $( '#end-turn' ).addClass( "hide" );
