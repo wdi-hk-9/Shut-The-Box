@@ -72,3 +72,12 @@ p {
 h3 {
   margin-bottom: 40px;
 }
+
+button#start-game {
+  font-size: 30px;
+  margin-top: 20px;
+}
+
+h1 {
+  line-height: 90px;
+}

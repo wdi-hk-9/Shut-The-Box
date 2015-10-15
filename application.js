@@ -164,11 +164,8 @@ $( function() {
     $( '#end-turn' ).addClass( "hide" );
     $( 'section.intro-page' ).removeClass( "hide" );
     $( 'section.game-page' ).addClass( "hide" );
-    if ( tile.length > 10 ) {
-      $( 'a#p1-tile10' ).detach().html( 0 );
-      $( 'a#p1-tile11' ).detach().html( 0 );
-      $( 'a#p1-tile12' ).detach().html( 0 );
-    }
+    $( 'button#9tile' ).removeClass( 'btn-success' );
+    $( 'button#12tile' ).removeClass( 'btn-success' );
   } );
 
   //refresh the tiles
@@ -189,20 +186,19 @@ $( function() {
 
   //select number of tiles 9 or 12
   $( 'section.intro-page #9tile' ).on( 'click', function() {
-    console.log( '9 tiles' );
+    $( 'button#9tile' ).toggleClass( 'btn-success' );
+    $( 'button#12tile' ).removeClass( 'btn-success' );
     game.maxTile = 10;
-    console.log( game.maxTile );
     $( 'a#p1-tile10' ).detach().html( 0 );
     $( 'a#p1-tile11' ).detach().html( 0 );
     $( 'a#p1-tile12' ).detach().html( 0 );
 
   } );
   $( 'section.intro-page #12tile' ).on( 'click', function() {
-    console.log( '12 tiles' );
+    $( 'button#12tile' ).toggleClass( 'btn-success' );
+    $( 'button#9tile' ).removeClass( 'btn-success' );
     game.maxTile = 13;
-    console.log( game.maxTile );
     var tilesAmount = $( '.tile' ).length
-    console.log( tilesAmount )
     if ( tilesAmount === 9 ) {
       $( '#tiles' ).append( '<a class="tile tile-active" value="10" id="p1-tile10">10</a>' );
       $( '#tiles' ).append( '<a class="tile tile-active" value="11" id="p1-tile11">11</a>' );
