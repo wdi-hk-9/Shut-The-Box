@@ -16,7 +16,6 @@ $( function() {
     game.roll();
     $( '#dice1' ).attr( 'src', 'img/face' + game.dice.dice1 + '.png' );
     $( '#dice2' ).attr( 'src', 'img/face' + game.dice.dice2 + '.png' );
-    tileUpdateMessage( "Total tiles closed: " + game.playerTileTotal );
 
     var msg = " Roll Total: " + game.dice.sum;
     $( '.roll-total' ).html( msg );
@@ -123,6 +122,8 @@ $( function() {
 
     if ( game.currentPlayer === "Player1" ) {
       game.currentPlayer = "Player2";
+      $( 'h3.player1' ).removeClass( 'highlight' );
+      $( 'h3.player2' ).addClass( 'highlight' );
       updateMessage( game.currentPlayer + ": Click Roll the Dice" );
       $( '#roll-btn' ).removeClass( "hide" );
       $( '#end-turn' ).addClass( "hide" );
@@ -144,6 +145,8 @@ $( function() {
   } );
 
   updateMessage( "Player1: Click Roll the Dice to Start Game" );
+  $( 'h3.player2' ).removeClass( 'highlight' );
+  $( 'h3.player1' ).addClass( 'highlight' );
 
   //click button to roll the dice
   $( '#roll-btn' ).on( 'click', function() {
@@ -170,6 +173,8 @@ $( function() {
     game.players[ game.currentPlayer ][ 'points' ] = 0;
     $( 'h3.player2' ).html( "Player 2: " + game.players[ game.currentPlayer ][ 'points' ] );
     $( 'h3.player1' ).html( "Player 1: " + game.players[ game.currentPlayer ][ 'points' ] );
+    $( 'h3.player1' ).addClass( 'highlight' );
+    $( 'h3.player2' ).removeClass( 'highlight' );
     updateMessage( game.currentPlayer + ": Roll the Dice to Start" );
     tileUpdateMessage( "" );
     $( '.roll-total' ).html( "" );

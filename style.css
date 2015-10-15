@@ -2,6 +2,18 @@ body {
   font-family: 'Montserrat', sans-serif;
 }
 
+section #tile-board {
+  background-color: #92C96E;
+}
+
+section.game-page header > h1 {
+  font-size: 50px !important;
+}
+
+section#scoreboard {
+  background-color: #AED793;
+}
+
 .tile {
   display: inline-block;
   width: 60px;
@@ -25,19 +37,19 @@ body {
 }
 
 .tile-active {
-  background-color: #BB8D47;
+  background-color: #997238;
 }
 
 .tile-active:hover {
-  box-shadow: 2px 2px blue;
+  box-shadow: 2px 2px #994238;
 }
 
 .tile-disabled {
-  background-color: #ccc !important;
+  background-color: #DDC5A2 !important;
 }
 
 .player-selected {
-  background-color: red;
+  background-color: #994238;
 }
 
 .dice > img {
@@ -80,4 +92,17 @@ button#start-game {
 
 h1 {
   line-height: 90px;
+}
+
+.highlight {
+  color: #994238 !important;
+  font-weight: bold;
+}
+
+h3.player1 {
+  font-size: 30px;
+}
+
+h3.player2 {
+  font-size: 30px;
 }
